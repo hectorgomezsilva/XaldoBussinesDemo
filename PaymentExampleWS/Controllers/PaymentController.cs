@@ -21,7 +21,7 @@ namespace PaymentExampleWS.Controllers
         {
             PaymentModel pModel = new PaymentModel();
             /* Para sabe cual es su ApiKey debe iniciar sesion como empresa en www.Xaldo.com e ir al apartado de "Empresa" despúes en la parte "WebService" y "Api Key" */
-            if (paymentRequest.ApiKey == "A123456")
+            if (paymentRequest.ApiKey == "Qpx4AQlFWoCe4wrESGxYycyb3j1EwO")
             {
                 if (paymentRequest.Contract != "" && paymentRequest.Contract != null)
                 {
