@@ -29,16 +29,14 @@ namespace PaymentExampleWS.Helpers
         public async Task<BalanceModel> search()
         {
             BalanceModel balanceToReturn = new BalanceModel();
-            var balanceDetail = new BalanceModel();/*Aquí se reemplaza -new BalanceModel();- por la consulta a la base de datos correspondiente por ejemplo
-            var balancedetail = await BalanceDetail.getBalanceByContractNumber(balanceRequest.Contract);
-            dicha consulta deberá llenar balanceDetail con un objeto que contendrá Amount(monto de deuda), Concept(concepto o servicio), DueDate(fecha de vencimiento)
-            IdError se dejara en 0 y Status como false, ya que eso lo manejara el webservice por su cuenta para verificar el estado de la operación*/
+            BalanceModel balanceDetail = new BalanceModel();
+            //TO DO asignar a balanceDetail los valores que se regresaran, Amount(monto de deuda), Concept(concepto o servicio), DueDate(fecha de vencimiento)
             balanceToReturn.Contract = BalanceRequest.Contract;
             if (balanceDetail != null)
             {
-                balanceToReturn.Amount = 5.00;
-                balanceToReturn.Concept = "Pago de Servicio";
-                balanceToReturn.DueDate = "05/04/2018";
+                balanceToReturn.Amount = balanceDetail.Amount;
+                balanceToReturn.Concept = balanceDetail.Concept;
+                balanceToReturn.DueDate = balanceDetail.DueDate;
                 balanceToReturn.IdError = (int)ErrorEnum.ErrorResponce.Success;
                 balanceToReturn.Status = true;
             }

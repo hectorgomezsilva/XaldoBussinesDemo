@@ -10,6 +10,17 @@ namespace PaymentExampleWS.Helpers
 {
     public class DataBasePayment
     {
+        /*
+        Errores:
+        0-Success
+        1-Error
+        2-Contrato no encontrado
+        3-No hay deuda
+        4-Fallo en la conexión
+        5-Contrato vencido
+        6-Contrato no valido
+        7-No autorizado
+        */
         PaymentRequest paymentRequest;
         public DataBasePayment(PaymentRequest paymentRequest)
         {
@@ -19,14 +30,12 @@ namespace PaymentExampleWS.Helpers
         public async Task<PaymentModel> pay()
         {
             PaymentModel paymentResponse = new PaymentModel();
-            var paymentDetail = new PaymentModel();/*Aquí se remplaza -new PaymentModel();- por el update a la base de datos correspondiente por ejemplo
-            var paymentDetail = await PaymentDetail.updateAccountByContractNumber(paymentRequest.Contract, paymentRequest.Amount);
-            dicho update deberá retornar a paymentDetail con un objeto que contendrá Status(true si fue exitoso o false si no fue así), Reference(el numero referencia de la operación)
-            IdError se dejará en 0 ya que eso lo manejará el webservice por su cuenta para verificar el estado de la operación*/
+            var paymentDetail = new PaymentModel();
+            //TO DO asignar a paymentDetail los valores que se regresaran, Status(true si fue exitoso o false si no fue así), Reference(el numero referencia de la operación)
             if (paymentDetail != null)
             {
-                paymentResponse.Status = true;
-                paymentResponse.Reference = "1";
+                paymentResponse.Status = paymentDetail.Status;
+                paymentResponse.Reference = paymentDetail.Reference;
                 paymentResponse.IdError = (int)ErrorEnum.ErrorResponce.Success;
             }
             else
